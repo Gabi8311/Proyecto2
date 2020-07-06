@@ -9,6 +9,7 @@ const userSchema = new Schema({
         enum: ['ADMIN','USER'],
         default: "USER"
       },
+      myEvents: [{ type: Schema.Types.ObjectId, ref: "Event" }],
 }, {
     timestamps: true
 })

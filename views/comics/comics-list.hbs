@@ -1,0 +1,15 @@
+<div class="container ">
+    <div class="row">
+        {{#each allComics}}
+        <div class="col-3 text-center m-3">
+            <div class="card comic">
+                <img src="{{coverImg}}" alt="Portada Cómic">
+                <div class="card-body">
+                    <h5 class="card-text">{{title}}</h5>
+                      <a href="/comics/{{_id}}" class="btn btn-sm btn-danger text-warning ">Ver detalle</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

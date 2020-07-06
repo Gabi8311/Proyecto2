@@ -22,4 +22,5 @@ require('./configs/locals.config')(app)
 require('./routes')(app)
 
 
+
 module.exports = app

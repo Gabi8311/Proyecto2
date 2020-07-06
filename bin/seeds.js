@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 const Movie = require('../models/movies.model')
 const Comic = require('../models/comics.model')
 const Phrase = require('../models/phrases.model')
+const Event = require('../models/event.model')
 
 
 const dbTitle = 'IronData'
@@ -10,6 +11,7 @@ mongoose.connect(`mongodb://localhost/${dbTitle}`, { useUnifiedTopology: true, u
 Movie.collection.drop()
 Comic.collection.drop()
 Phrase.collection.drop()
+Event.collection.drop()
 
 const comics = [
 
@@ -154,10 +156,7 @@ const comics = [
 ]
     
 const movies =[
-{   title:'Iron man',coverImg:'../images/Iron_Man_1_Portada.png',description:'El multimillonario fabricante de armas Tony Stark (Robert Downey Jr.) debe enfrentarse a su turbio pasado después de sufrir un accidente con una de sus armas. Equipado con una armadura de última generación tecnológica, se convierte en "El hombre de hierro", un héroe que se dedica a combatir el mal en todo el mundo. ',actors:['Robert Downey Jr',
-    'Terrence Howard','Jeff Bridges','Shaun Toub','Gwyneth Paltrow','Leslie Bibb',
-    'Faran Tahir','Clark Gregg','Bill Smitrovich','Sayed Badreya' ,'Paul Bettany',
-        'Jon Favreau', 'Peter Billingsley', 'Tim Guinee', 'Eileen Weisinger', 'Gerard Sanders', 'Samuel L. Jackson', 'Stan Lee'], year: 2008},
+{   title:'Iron man',coverImg:'../images/Iron_Man_1_Portada.png',description:'El multimillonario fabricante de armas Tony Stark (Robert Downey Jr.) debe enfrentarse a su turbio pasado después de sufrir un accidente con una de sus armas. Equipado con una armadura de última generación tecnológica, se convierte en "El hombre de hierro", un héroe que se dedica a combatir el mal en todo el mundo. ',actors:['Robert Downey Jr','Terrence Howard','Jeff Bridges','Shaun Toub','Gwyneth Paltrow','Leslie Bibb', 'Faran Tahir','Clark Gregg','Bill Smitrovich','Sayed Badreya' ,'Paul Bettany', 'Jon Favreau', 'Peter Billingsley', 'Tim Guinee', 'Eileen Weisinger', 'Gerard Sanders', 'Samuel L. Jackson', 'Stan Lee'], year: 2008},
     
     {title:'Iron Man 2',coverImg:'../images/ironMan2-portada.jpg',description:'El mundo ya sabe que el multimillonario Tony Stark (Robert Downey Jr.) es Iron Man, el superhéroe enmascarado. A pesar de las presiones del gobierno, la prensa y la opinión pública para que comparta su tecnología con el ejército, Tony es reacio a desvelar los secretos de la armadura de Iron Man, porque teme que esa información caiga en en manos de irresponsables. Con Pepper Potts (Gwyneth Paltrow) y James “Rhodey” Rhodes (Don Cheadle) a su lado, Tony forja alianzas nuevas y se enfrenta a nuevas y poderosas fuerzas.',actors:['Robert Downey Jr.', 'Mickey Rourke', 'Gwyneth Paltrow', 'Don Cheadle', 'Sam Rockwell', 'Scarlett Johansson', 'Samuel L. Jackson', 'Paul Bettany', 'Jon Favreau', 'Clark Gregg', 'Leslie Bibb', 'John Slattery', 'Garry Shandling', 'Kate Mara', 'Christiane Amanpour', 'Philippe Bergeron', 'James Bethea', 'Michael Bruno', 'Kate Clark', 'DJ AM', 'Tim Guinee', 'Eric L. Haney', 'Yevgeni Lazarev', 'Jean-François Duhamel', 'Stan Lee', 'Helena Mattsson', 'Anya Monzikova', 'Olivia Munn', 'Elon Musk', 'Bill O’Reilly', 'Alejandro Patino', 'Karim Saleh', 'Brian Schaeffer', 'Phillipe Simon', 'Krystal Ellsworth', 'Jennifer D. Johnson', 'Rachele Brooke Smith', 'Nadine Ellis'], year: 2010},
     
@@ -191,6 +190,16 @@ const phrases = [
     { title: 'El traje y yo somos uno.' }]
 
 
+
+const events =[{
+    title:'Reunión de frikis en Sol',
+    theme:'La relación de Tony Stark con su Padre',
+    location: 'Sol',coordinates:[41.386230,
+     2.174980],
+     owner:['5f009810c9f5aa069b8fb5cb'],
+     participants:['5f0325ff33eef7217a35f979']
+
+}]
 Movie
     .create(movies)
     .then(allMovies => {console.log(`Created ${allMovies.length} movies`)})
@@ -201,12 +210,33 @@ Comic
     .then(allComics => {console.log(`Created ${allComics.length} comics`)})
     .catch(err => console.log('There was an error creating the comics', err))
 
+
+
 Phrase
     .create(phrases)
-    .then(allPhrases => {
-        console.log(`Created ${allPhrases.length} phrases`)
-        mongoose.connection.close()
-    })
+    .then(allPhrases => {console.log(`Created ${allPhrases.length} phrases`)})
     .catch(err => console.log('There was an error creating the phrases', err))
 
+Event
+    .create(events)
+    .then(allEvents => {console.log(`Created ${allEvents.length} events`)
+        mongoose.connection.close()})
+    .catch(err => console.log('There was an error creating the events', err))
+        
+
     ////Promise All
+
+
+// const moviePromise = Movie.create(movies)
+// const comicPromise = Comic.create(comics)
+// const phrasePromise = Phrase.create(phrases)
+// //const eventsPromise = Event.create(events)
+    
+// Promise
+//     .all([moviePromise, comicPromise, phrasePromise])
+//     .then(results => console.log(`Created ${results.length}`))
+//      mongoose.connection.close() 
+//     .catch( err =>next ( new Error (err)))
+
+
+

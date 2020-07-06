@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../models/user.model")
+const User = require("../models/user.model")/////////////////
 const Movie = require("../models/movies.model")
 const Comic = require("../models/comics.model")
 const Phrase = require("../models/phrases.model")
@@ -19,26 +19,19 @@ const checkProfileEdition = (req, res, next) => req.isAuthenticated() && req.par
 
 
 //List all
-router.get('/peliculas', (req, res, next) => {
-    
-    Movie.find()
-        .then(allMovies => res.render('movies-list', {allMovies}))
-        .catch(err => next(err))
-        
-})
 
 router.get('/comics', (req, res, next) => {
     
     Comic.find()
-        .then(allComics => res.render('comics-list', {allComics}))
+        .then(allComics => res.render('comics/comics-list', {allComics}))
         .catch(err => next(err))
         
 })
 
 router.get('/frases', (req, res, next) => {
     
-    Frase.find()
-        .then(allPhrases => res.render('phrases', {allPhrases}))
+    Phrase.find()
+        .then(allPhrases => res.render('phrases/phrases-list', {allPhrases}))
         .catch(err => next(err))
         
 })
@@ -46,27 +39,20 @@ router.get('/frases', (req, res, next) => {
 //READ one 
 
 router.get('/:id', (req, res, next) => {
-    Movies.findById(req.params.id)
-        .then(theMovie => res.render('movies-details', {
-            theMovie
-        }))
+    Comic.findById(req.params.id)
+        .then(theComic => res.render('comics/comics-details',theComic))
         .catch(err => next(err))
 })
 
 router.get('/:id', (req, res, next) => {
-    Comics.findById(req.params.id)
-        .then(theComic => res.render('movies-details', {
-            theComic
-        }))
+    Phrase.findById(req.params.id)
+        .then(thePhrase => res.render('phrases/phrases-details', thePhrase))
         .catch(err => next(err))
 })
 
-router.get('/:id', (req, res, next) => {
-    Movies.findById(req.params.id)
-        .then(theMovie => res.render('movies-details', {
-            theMovie
-        }))
-        .catch(err => next(err))
-})
+//Eventos
+//routes.get('/privado/crear-evento',(req,res) => res.render('private/new-event'))
+
+
          
 module.exports = router

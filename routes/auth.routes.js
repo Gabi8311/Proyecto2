@@ -10,7 +10,7 @@ const bcryptSalt = 10
 
 //Autenticación de usuario
 
-const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/login')
+const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/auth/login')
 
 //Ver que rol tiene
 const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect("auth/login", {
@@ -48,7 +48,7 @@ router.post("/signup", (req, res, next) => {
 router.get('/login', (req, res) => res.render('auth/login', { "errorMsg": req.flash("error") }))
 router.post('/login', passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/auth/login",
     failureFlash: true,
     passReqToCallback: true,
     badRequestMessage: 'Rellena todos los campos'
@@ -58,7 +58,7 @@ router.post('/login', passport.authenticate("local", {
 // User logout
 router.get("/logout", (req, res) => {
     req.logout()
-    res.redirect("/login")
+    res.redirect("/auth/login")
 })
 
 //Página Privada
