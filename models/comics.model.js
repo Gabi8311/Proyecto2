@@ -15,6 +15,9 @@ const comicSchema = new Schema(
         },
     year: {
       type: Number,
+    },
+    comments:{
+      type:[String]
     }
   },
   {

@@ -17,6 +17,9 @@ const moviesSchema = new Schema(
     },
       year: {
       type: Number,
+    },
+    comments:{
+      type:[String]
     }
   },
   {
