@@ -4,6 +4,18 @@
     <img src="{{coverImg}}" alt="cover image">
     <p>Sinopsis: {{description}}</p>
     <p>Año de estreno: {{year}}</p>
-    <a href="/comics" class="btn btn-sm btn-danger text-warning  mt-3">Volver a lista</a>
+
+
+    <a href="/comics" class="btn btn-sm btn-danger text-warning  ">Volver a lista</a>
     <a href="/comics/{{_id}}/newComment" class="btn btn-sm btn-danger text-warning m-5">Deja tu comentario</a>
+</div>
+
+<div class="container registro">
+    <h2>Opiniones sobre {{title}}</h2>
+    <ul>
+        {{#each comments}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+
 </div>

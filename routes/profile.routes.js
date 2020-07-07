@@ -3,10 +3,11 @@ const router = express.Router();
 const User = require("../models/user.model")
 const passport = require("passport")
 
-const isLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render("auth/login", {
-    message: "Inicia sesión"
-})
+const isLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render("auth/login", {message: "Inicia sesión"})
+
 const isProfileOwner = (req, res, next) => req.params.id === req.user.id ? true : false
+
+const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/auth/login')
 
 const checkProfileEdition = (req, res, next) => req.isAuthenticated() && req.params.id === req.user.id ? next() : res.redirect("/auth/login")
 
@@ -14,8 +15,13 @@ const checkProfileEdition = (req, res, next) => req.isAuthenticated() && req.par
 const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect("auth/login", {
     message: "Area Restringida!"
 })
+const checkAdmin  = () => req.user.role.includes('ADMIN')
+router.get('/', checkAuthenticated, (req, res) =>{
+    
+res.render('private/principal', { user: req.user })})     
 
-router.get("/", isLoggedIn, checkRole(['ADMIN']), (req, res, next) => {
+
+router.get("/list", isLoggedIn, checkRole(['ADMIN']), (req, res, next) => {
 
     const checkAdmin  = () => req.user.role.includes('ADMIN')
     

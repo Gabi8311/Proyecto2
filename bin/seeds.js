@@ -200,43 +200,17 @@ const events =[{
      participants:['5f0325ff33eef7217a35f979']
 
 }]
-Movie
-    .create(movies)
-    .then(allMovies => {console.log(`Created ${allMovies.length} movies`)})
-    .catch(err => console.log('There was an error creating the movies', err))
 
-Comic
-    .create(comics)
-    .then(allComics => {console.log(`Created ${allComics.length} comics`)})
-    .catch(err => console.log('There was an error creating the comics', err))
-
-
-
-Phrase
-    .create(phrases)
-    .then(allPhrases => {console.log(`Created ${allPhrases.length} phrases`)})
-    .catch(err => console.log('There was an error creating the phrases', err))
-
-Event
-    .create(events)
-    .then(allEvents => {console.log(`Created ${allEvents.length} events`)
-        mongoose.connection.close()})
-    .catch(err => console.log('There was an error creating the events', err))
-        
-
-    ////Promise All
-
-
-// const moviePromise = Movie.create(movies)
-// const comicPromise = Comic.create(comics)
-// const phrasePromise = Phrase.create(phrases)
-// //const eventsPromise = Event.create(events)
+const moviePromise = Movie.create(movies)
+const comicPromise = Comic.create(comics)
+const phrasePromise = Phrase.create(phrases)
+const eventsPromise = Event.create(events)
     
-// Promise
-//     .all([moviePromise, comicPromise, phrasePromise])
-//     .then(results => console.log(`Created ${results.length}`))
-//      mongoose.connection.close() 
-//     .catch( err =>next ( new Error (err)))
+Promise
+    .all([moviePromise, comicPromise, phrasePromise,eventsPromise])
+    .then(results => console.log(`Created ${results.length}`))
+    .then(() => mongoose.connection.close()) 
+    .catch( err =>next ( new Error (err)))
 
 
 

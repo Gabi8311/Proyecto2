@@ -13,7 +13,7 @@ const eventSchema = new Schema(
       type: { type: String },
       coordinates: [Number],
     },
-    owner: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
     participants: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   {

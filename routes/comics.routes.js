@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Comic = require("../models/comics.model")
 
-//List allComics
+
 router.get('/', (req, res, next) => {
     
     Comic.find()
@@ -12,7 +12,6 @@ router.get('/', (req, res, next) => {
         
 })
 
-//Detalles comics
 
 router.get('/:id', (req, res, next) => {
     Comic.findById(req.params.id)
@@ -20,7 +19,7 @@ router.get('/:id', (req, res, next) => {
         .catch(err => next(err))
 })
 
-//Crear comentarios de cómics
+
 router.get('/:id/newComment',(req,res,next) =>{
     Comic.findById(req.params.id)
     .then(theComment => res.render('comics/comics-comment-form', theComment))
@@ -28,5 +27,12 @@ router.get('/:id/newComment',(req,res,next) =>{
 
 })
 
+router.post('/:id/newComment',(req,res,next) => {
+    const {comments} =req.body
+    Comic.findOneAndUpdate(req.params.id,{$push: {comments:comments}})
+    .then(() => res.redirect(`/comics/${req.params.id}`))
+    .catch(err => next(err))
+
+})
          
 module.exports = router

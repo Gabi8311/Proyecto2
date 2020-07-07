@@ -10,7 +10,7 @@ const bcryptSalt = 10
 
 //Autenticación de usuario
 
-const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/auth/login')
+
 
 
 
@@ -59,7 +59,6 @@ router.get("/logout", (req, res) => {
 })
 
 //Página Privada
-router.get('/profile', checkAuthenticated, (req, res) => res.render('private/principal', { user: req.user }))     
 
  
 
