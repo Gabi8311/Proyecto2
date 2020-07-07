@@ -10,3 +10,13 @@
     <a href="/movies" class="btn btn-sm btn-danger text-warning m-5">Volver al listado</a>
     <a href="/movies/{{_id}}/newComment" class="btn btn-sm btn-danger text-warning m-5">Deja tu comentario</a>
 </div>
+
+<div class="container registro">
+    <h2>Opiniones sobre {{title}}</h2>
+    <ul>
+        {{#each comments}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+
+</div>

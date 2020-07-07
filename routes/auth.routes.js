@@ -12,10 +12,7 @@ const bcryptSalt = 10
 
 const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/auth/login')
 
-//Ver que rol tiene
-const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect("auth/login", {
-    message: "Area Restringida!"
-})
+
 
 // User signup
 router.get("/signup", (req, res) => res.render("auth/signup"))
@@ -62,8 +59,9 @@ router.get("/logout", (req, res) => {
 })
 
 //Página Privada
-router.get('/privado', checkAuthenticated, (req, res) => res.render('private/principal', { user: req.user }))     
+router.get('/profile', checkAuthenticated, (req, res) => res.render('private/principal', { user: req.user }))     
 
  
 
 module.exports = router
+

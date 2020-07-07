@@ -1,8 +1,9 @@
 <div class="container registro">
-<h1>Deja tu comentario sobre la película {{title}}</h1>
-<form action="/movies/{{id}}/newComment" method="post">
-    <textarea class="ml-4 mt-4" name="comment" id="comment" cols="50" rows="10" placeholder="Escriba aquí"></textarea>
-    <button class="btn btn-sm btn-danger text-warning m-5">Guardar comentario</button>
- <a href="/movies" class="btn btn-sm btn-danger text-warning m-5">Volver al listado</a>
-</form>
+    <h1>Deja tu comentario sobre la película {{title}}</h1>
+    <form action="/movies/{{id}}/newComment" method="post">
+        <textarea class="ml-4 mt-4" name="comments" id="comments" cols="50" rows="10"
+            placeholder="Escriba aquí"></textarea>
+        <button class="btn btn-sm btn-danger text-warning m-5">Guardar comentario</button>
+        <a href="/movies" class="btn btn-sm btn-danger text-warning m-5">Volver al listado</a>
+    </form>
 </div>
