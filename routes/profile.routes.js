@@ -11,49 +11,58 @@ const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : 
 
 const checkProfileEdition = (req, res, next) => req.isAuthenticated() && req.params.id === req.user.id ? next() : res.redirect("/auth/login")
 
-//Ver que rol tiene
 const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect("auth/login", {
     message: "Area Restringida!"
-})
-const checkAdmin  = () => req.user.role.includes('ADMIN')
-router.get('/', checkAuthenticated, (req, res) =>{
-    
-res.render('private/principal', { user: req.user })})     
 
+})
+
+router.get('/', checkAuthenticated, (req, res) => {
+    const currentUser = req.user
+    const checkAdmin = () => req.user.role.includes('ADMIN')
+    res.render('private/principal', { currentUser,checkAdmin: checkAdmin })
+
+})     
 
 router.get("/list", isLoggedIn, checkRole(['ADMIN']), (req, res, next) => {
-
     const checkAdmin  = () => req.user.role.includes('ADMIN')
-    
-    User.find({}, {
-            username: 1
-        })
-        .then(allUsers => res.render("private/principal", {allUsers,checkAdmin: checkAdmin}))
+
+    User.find({}, {username: 1})
+        .then(allUsers => res.render("private/profile-list", {allUsers,checkAdmin: checkAdmin}))
         .catch(err => console.log("Error en la BBDD ", err))
 
 })
 
-
 router.get("/:id", isLoggedIn, (req, res) => {
     const isOwner = isProfileOwner(req)
+
     User.findById(req.params.id)
         .then(user => res.render("private/profile-edition", {user,isOwner: isOwner}))
         .catch(err => console.log("Error en la BBDD ", err))
 
 })
-router.get("/:id/edit", isLoggedIn, checkProfileEdition, (req, res) => {
+
+router.get("/list/:id/edit", isLoggedIn, checkRole(['ADMIN']), (req, res) => {
+
     User.findById(req.params.id)
         .then(user => res.render("private/profile-edition", user))
         .catch(err => console.log("Error en la BBDD ", err))
+
 })
 
-router.post("/:id", isLoggedIn, checkProfileEdition, (req, res) => {
+router.post("/:id", isLoggedIn, checkRole(['ADMIN']), (req, res) => {
     const {role,myEvents} = req.body
-    User.findByIdAndUpdate(req.params.id, {role,myEvents}, {
-            new: true
-        })
-        .then(() => res.redirect(`/`))
+
+    User.findByIdAndUpdate(req.params.id, {role,myEvents}, {new: true})
+        .then(() => res.redirect(`/profile/list`))
         .catch(err => console.log("Error en la BBDD ", err))
 })
+
+router.post('/list/:idUser',(req,res) => {
+
+    User.findByIdAndRemove(req.params.idUser)
+      .then(() => res.redirect('/profile/list'))
+      .catch(err => console.log('Error en la BBDD ',err))
+    
+    })
 
 module.exports = router

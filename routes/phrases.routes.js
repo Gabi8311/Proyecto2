@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
 const Phrase = require("../models/phrases.model")
-
 //List all phrases
-
 router.get('/', (req, res, next) => {
     
     Phrase.find()

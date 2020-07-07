@@ -210,7 +210,7 @@ Promise
     .all([moviePromise, comicPromise, phrasePromise,eventsPromise])
     .then(results => console.log(`Created ${results.length}`))
     .then(() => mongoose.connection.close()) 
-    .catch( err =>next ( new Error (err)))
+    .catch(err => console.log(err))
 
 
 

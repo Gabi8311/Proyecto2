@@ -1,19 +1,16 @@
+<div class="registro">
 <h1>Lista de Eventos</h1>
 
-
-<form action="/events-list" method="POST">
+<form action="/events/new-event" method="POST">
     <div class="form-group">
-        <label for="field1">Nombre</label>
-        <input name="username" type="text" class="form-control" id="field1" placeholder="{{username}}">
+        <label for="title">Título</label>
+        <input name="title" type="text" class="form-control" id="field1" placeholder="Título del Evento">
     </div>
     <div class="form-group">
-        <label for="field2">Nombre del evento</label>
-        <input name="title" type="text" class="form-control" id="title">
+        <label for="theme">Tema del evento</label>
+        <input name="theme" type="text" class="form-control" id="theme" placeholder="Coloque el tema aquí">
     </div>
-    <div class="form-group">
-        <label for="field3">Tema a debatir</label>
-        <input name="theme" type="text" class="form-control" id="theme">
-    </div>
+   
     <div class="form-group">
         <label>Dirección</label>
         <input type="text" name="latitude" placeholder="latitude">
@@ -26,3 +23,5 @@
     <div id="errorMsg">{{{errorMsg}}}</div>
     {{/if}}
 </form>
+</div>
+<a href="/events/event-list" class="btn btn-sm btn-danger text-warning m-5">Volver</a>
