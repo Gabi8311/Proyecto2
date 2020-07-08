@@ -1,4 +1,4 @@
-<div class="container registro">
+<div class="registro">
     <h1>Lista de eventos</h1>
     <div class="row">
         {{#each allEvents}}
@@ -20,7 +20,9 @@
                     </ul>
                 </div>
             </div>
+             <a href="/events/{{id}}" class="btn btn-sm btn-danger text-warning mt-3">Editar evento</a>
         </div>
+       
         {{/each}}
     </div>
 </div>
