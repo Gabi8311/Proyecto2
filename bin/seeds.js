@@ -4,14 +4,15 @@ const Comic = require('../models/comics.model')
 const Phrase = require('../models/phrases.model')
 const Event = require('../models/event.model')
 
-
 const dbTitle = 'IronData'
-mongoose.connect(`mongodb://localhost/${dbTitle}`, { useUnifiedTopology: true, useNewUrlParser: true })
 
-Movie.collection.drop()
-Comic.collection.drop()
-Phrase.collection.drop()
-Event.collection.drop()
+mongoose.connect(`mongodb://localhost/${dbTitle}`, { useUnifiedTopology: true, useNewUrlParser: true })
+//mongoose.connect(`mongodb+srv://GabrielMoreno:Superman7@cluster0.d6h5v.mongodb.net/test`, { useUnifiedTopology: true, useNewUrlParser: true })
+
+// Movie.collection.drop()
+// Comic.collection.drop()
+// Phrase.collection.drop()
+// Event.collection.drop()
 
 const comics = [
 
