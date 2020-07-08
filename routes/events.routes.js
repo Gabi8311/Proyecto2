@@ -11,15 +11,36 @@ router.get('/events-list', (req, res, next) => {
     .catch(err => next(err))
         
 })
+
+//Crear
 router.get("/new-event", (req, res) => res.render("events/new-events"))
 
 router.post('/new-event', (req, res, next) => {
-    const { title,theme,location,owner,participants } = req.body
+    const { title,theme,location,eventDate,owner,participants } = req.body
+
 Event
-.create({ title,theme,location,owner,participants })
+.create({ title,theme,location,eventDate,owner,participants })
 .then(() => res.redirect("/events/events-list"))
 .catch(err => next(err))
 })
+//Update
+router.get('/:id', (req, res, next) => {
+        Event.findById(req.params.id)
+            .then(theComic => res.render('events/events-details',theComic))
+            .catch(err => next(err))
+    })
+
+    router.post("/:id", (req, res, next) => {
+        const { title,theme,location,eventDate,owner,participants} = req.body
+    
+        Event.findByIdAndUpdate(req.params.id, {title,theme,location,eventDate,owner,participants}, {new: true})
+            .then(() => res.redirect(`/events/events-list`))
+            .catch(err => next(err))
+    })
+
+
+
+
 //Detalles comics
 
 // router.get('/:id', (req, res, next) => {

@@ -25,6 +25,7 @@ router.get('/', checkAuthenticated, (req, res) => {
 
 router.get("/list", isLoggedIn, checkRole(['ADMIN']), (req, res, next) => {
     const checkAdmin  = () => req.user.role.includes('ADMIN')
+    
 
     User.find({}, {username: 1})
         .then(allUsers => res.render("private/profile-list", {allUsers,checkAdmin: checkAdmin}))

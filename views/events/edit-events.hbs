@@ -9,3 +9,39 @@
         <input type="text" name="longitude" id="longitude" placeholder="Longitude" value="{{ restaurant.location.coordinates.[0]}}">
     <button type="submit" name="" id="submit">Edit</button>
 </form> --}}
+
+<div class="registro">
+<h1>Editar Evento</h1>
+
+<form action="/events/{{id}}" method="POST">
+    <div class="form-group">
+        <label for="title">Título</label>
+        <input name="title" type="text" class="form-control" id="field1" placeholder={{title}}>
+    </div>
+    <div class="form-group">
+        <label for="theme">Tema del evento</label>
+        <input name="theme" type="text" class="form-control" id="theme" placeholder={{theme}}>
+    </div>
+   
+    <div class="form-group">
+        <label>Dirección</label>
+        <input type="text" name="latitude" placeholder="latitude" placeholder={{localication.latitude}}>
+        <input type="text" name="longitude" placeholder="longitude" placeholder={{localication.longitude}}>
+        <small class="form-text text-muted">Introduce la nueva dirección en coordenadas</small>
+    </div>
+     <div class="form-group">
+        <label for="eventDate">Dia del evento</label>
+        <input name="eventDate" type="text" class="form-control" id="eventDate" placeholder={{eventDate}}>
+    </div>
+     <div class="form-group">
+        <label for="owner">Creador del Evento</label>
+        <input name="owner" type="text" class="form-control" id="owner" placeholder={{owner}}>
+    </div>
+    <button type="submit" class="btn btn-dark btn-block btn-lg bg-danger">Editar evento</button>
+
+    {{#if errorMsg}}
+    <div id="errorMsg">{{{errorMsg}}}</div>
+    {{/if}}
+</form>
+</div>
+<a href="/profile" class="btn btn-sm btn-danger text-warning m-5 pl-5 pr-5">Volver</a>

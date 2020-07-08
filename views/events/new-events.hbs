@@ -17,6 +17,14 @@
         <input type="text" name="longitude" placeholder="longitude">
         <small class="form-text text-muted">Introduce la dirección en coordenadas</small>
     </div>
+     <div class="form-group">
+        <label for="eventDate">Dia del evento</label>
+        <input name="eventDate" type="text" class="form-control" id="eventDate" placeholder="Día del evento">
+    </div>
+     <div class="form-group">
+        <label for="owner">Creador del Evento</label>
+        <input name="owner" type="text" class="form-control" id="owner" placeholder="Nombre ó Nick del creador del evento">
+    </div>
     <button type="submit" class="btn btn-dark btn-block btn-lg bg-danger">Registrar evento</button>
 
     {{#if errorMsg}}
@@ -24,8 +32,8 @@
     {{/if}}
 </form>
 </div>
-<a href="/events/event-list" class="btn btn-sm btn-danger text-warning m-5">Volver</a>
-<div>
+<a href="/profile" class="btn btn-sm btn-danger text-warning m-5 pl-5 pr-5">Volver</a>
+{{!-- <div>
     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-interval="3000">
@@ -53,4 +61,4 @@
     <span class="sr-only">Next</span>
   </a>
 </div> 
-</div> 
+</div>  --}}

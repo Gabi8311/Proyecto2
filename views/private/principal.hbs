@@ -1,20 +1,41 @@
 
 <div class="registro">
 <h1>Página Privada</h1>
-<h2>Bienvenido a tu perfil, {{currentUser.username}}!!</h>
-</div>
-
-<div class="">
-    <a href="/movies" class="btn btn-outline-danger text-warning ml-5">Ver todas las peliculas</a>
-    <a href="/comics" class="btn btn-outline-danger text-warning ml-5">Ver los mejores 20 comics</a>
-    <a href="/phrases" class="btn btn-outline-danger text-warning ml-5">Ver las mejores Frases de Tony</a>
-  <br>
-  <a href="/events/new-event" class="btn btn-outline-danger text-warning ml-5 mt-5">Crear evento</a>
-    <a href="#" class="btn btn-outline-danger text-warning ml-5 mt-5">Mis eventos</a>
-    <a href="/events/events-list" class="btn btn-outline-danger text-warning ml-5 mt-5">Todos los eventos</a>
-</div>
-
+<h2>Bienvenido a tu perfil, {{currentUser.username}}!!</h2>
 {{#if checkAdmin}}
- <a href="/profile/list" class="btn btn-outline-danger text-warning ml-5 mt-5">Lista de usuarios</a>
+ <a href="/profile/list" class="btn btn-outline-danger text-warning m-5 text-center">Lista de usuarios</a>
 {{/if}}
+</div>
+<hr>
+
+<div class="row text-center">
+
+    <div class="col-4">
+      <img src="/images/IronMan2-600x890.jpeg" alt="Imagen">
+    <a href="/movies" class="btn btn-outline-danger text-warning mt-3">Ver todas las peliculas</a>
+    </div>
+
+     <div class="col-4">
+       <img src="/images/the-ultimates.jpg" alt="Imagen">
+    <a href="/comics" class="btn btn-outline-danger text-warning mt-3">Ver los mejores 20 comics</a>
+    </div>
+
+    <div class="col-4">
+     <img src="/images/Frases-de-Iron-Man-1.jpg" alt="Imagen">
+    <a href="/phrases" class="btn btn-outline-danger text-warning mt-3">Ver las mejores Frases de Tony</a>
+  </div>
+
+  <hr>
+  <div class="col-4">
+    <a href="/events/new-event" class="btn btn-outline-danger text-warning mb-5 mt-5">Crear evento</a>
+    </div>
+     <div class="col-4">
+    <a href="#" class="btn btn-outline-danger text-warning m-5">Mis eventos</a>
+    </div>
+    <div class="col-4">
+    <a href="/events/events-list" class="btn btn-outline-danger text-warning m-5">Todos los eventos</a>
+</div>
+</div>
+
+
 

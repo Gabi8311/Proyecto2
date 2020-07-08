@@ -16,9 +16,6 @@ const eventSchema = new Schema(
     eventDate: {
       type: Date
     },
-    eventTime:{
-      ///////////////////////////////////////////////////
-    },
     owner: { type: Schema.Types.ObjectId, ref: "User" },
     participants: [{ type: Schema.Types.ObjectId, ref: "User" }]
   },
