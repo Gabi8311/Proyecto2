@@ -8,11 +8,12 @@ window.onload = () => {
 
 
     myMap = new google.maps.Map(document.getElementById('myMap'), {
-        zoom: 16,
+        zoom: 12,
         center: PlazaNuevaEspaña,
         styles: mapStyles.IronMAn
-    });
+    })
 
+    
     getEvents()
 
 }
@@ -35,12 +36,12 @@ function placeEvents(events) {
         new google.maps.Marker({
             position: center,
             map: myMap,
-            title: event.name
+            title: event.name   
         })
     })
 
     myMap.setCenter({
-        lat: event[0].location.coordinates[1],
-        lng: event[0].location.coordinates[0]
+        lat: events[0].location.coordinates[1],
+        lng: events[0].location.coordinates[0]
     })
 }

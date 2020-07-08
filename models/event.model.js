@@ -4,26 +4,37 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema(
   {
     title: {
-      type: String
+      type: String,
+      required:true
     },
     theme:{
-        type:String
+        type:String,
+        required:true
     },
-    location: {
-      type: { type: String },
-      coordinates: [Number],
+
+    locationName:{
+      type: String,
+      required: true
     },
+    coordinates: {
+      type: [Number],
+      required: true
+    },
+    
     eventDate: {
-      type: Date
+      type: Date,
+      default:Date.now
     },
+    
     owner: { type: Schema.Types.ObjectId, ref: "User" },
+    
     participants: [{ type: Schema.Types.ObjectId, ref: "User" }]
   },
 
   {
     timestamps: true,
   }
-);
+)
 
 eventSchema.index({ location: '2dsphere' });
 

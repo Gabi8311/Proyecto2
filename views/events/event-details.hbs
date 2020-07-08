@@ -1,0 +1,24 @@
+
+<div class="container registro text-center">
+<h1>Detalles del Evento</h1>
+<hr>
+    <h2>{{title}}</h2>
+    <hr>
+    <h3>Tema: "{{theme}}"</h3>
+    <hr>
+    <h4>Dónde: {{locationName}}</h4>
+    <hr>
+    <h5>Cuándo: {{eventDate}}</h5>
+    <hr>
+    <h6>Organizado por: {{owner.username}}</h6>
+    <hr>
+    <ul>Participantes:
+        {{#each participants}}
+        <p>{{this.username}}</p>
+        {{/each}}
+    </ul>
+    <a href="/events/events-list" class="btn btn-sm btn-danger text-warning ml-5">Volver a lista</a>
+{{#if checkAdmin}}
+   <a href="/events/events-list">Eliminar Evento</a>
+{{/if}}
+</div>

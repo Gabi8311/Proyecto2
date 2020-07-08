@@ -1,23 +1,21 @@
-<div class="container registro">
+<div class="registro mt-5">
 
     <h1>{{title}}</h1>
 
     <img src="{{coverImg}}" alt="cover image">
-    <p>Descripción: {{description}}</p>
-    <p>Actores: {{actors}}</p>
-    <p>Año de estreno: {{year}}</p>
+    <h3 class="mt-5">Descripción: {{description}}</h3>
+    <h4>Actores: {{actors}}</h4>
+    <h5>Año de estreno: {{year}}</h5>
 
     <a href="/movies" class="btn btn-sm btn-danger text-warning m-5">Volver al listado</a>
     <a href="/movies/{{_id}}/newComment" class="btn btn-sm btn-danger text-warning m-5">Deja tu comentario</a>
 </div>
 
-<div class="container registro">
+<div class="registro">
     <h2>Opiniones sobre {{title}}</h2>
     <ul>
         {{#each comments}}
-        <li>{{this}}</li>
-             <a href="">Borrar comentario</a>
-             <a href="">Editar comentario</a>
+        <li><h4>{{this}}</h4></li>
         {{/each}}
     </ul>
 

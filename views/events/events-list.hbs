@@ -1,33 +1,28 @@
-<div class="registro">
-    <h1>Lista de eventos</h1>
+<div class="registro text-center">
+    <h1 class="mb-5">Lista de eventos</h1>
     <div class="row">
         {{#each allEvents}}
-        <div class="col-3 text-center m-3">
-            <div class="card phrases bg-danger">
+        <div class="col-3 text-center">
+            <div class="card phrases bg-dark">
                 <div class="card-body">
                     <h3 class="card-text text-warning">"{{title}}"</h3>
                     <hr>
                     <h4>{{theme}}</h4>
                     <hr>
-                    <h5>{{location}}</h5>
+                    <h5>{{locationName}}</h5>
                     <hr>
-                    <h6>{{owner}}</h6>
+                    <h6>{{owner.username}}</h6>
                     <hr>
-                    <ul>
-                     {{#each participants}}
-                       <li>{{this.username}}</li>
-                     {{/each}}
-                    </ul>
                 </div>
             </div>
-             <a href="/events/{{id}}" class="btn btn-sm btn-danger text-warning mt-3">Editar evento</a>
+             <a href="/events/{{id}}" class="btn btn-sm btn-danger text-warning mt-3 mb-5">Ver evento</a>
         </div>
        
         {{/each}}
     </div>
 </div>
 
-<a href="/profile" class="btn btn-sm btn-danger text-warning m-5 pl-5 pr-5">Volver</a>
+
 
 
 <figure id="myMap"></figure>
@@ -38,8 +33,9 @@
 
 <script src="/javascripts/main.js"></script>
 <script src="/javascripts/mapStyles.js"></script>
+<script src="/javascripts/directions.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx3OiipzcZaPCL4CjIXP8rlepTewo-z-0"></script>
 
 
-<a href="#" class="btn btn-sm btn-danger text-warning m-5">Volver</a>
+<a href="/profile" class="btn btn-sm btn-danger text-warning mt-5 mb-5 pl-5 pr-5">Volver</a>

@@ -28,7 +28,7 @@ router.get('/:id/newComment',(req,res,next) =>{
 router.post('/:id/newComment',(req,res,next) => {
     const {comments} =req.body
 
-    Comic.findOneAndUpdate(req.params.id,{$push: {comments:comments}})
+    Comic.findByIdAndUpdate(req.params.id,{$push: {comments:comments}})
     .then(() => res.redirect(`/comics/${req.params.id}`))
     .catch(err => next(err))
 

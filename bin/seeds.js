@@ -184,21 +184,28 @@ const phrases = [
     {title: '¿Iron Man? Es bastante pegadizo. Suena lindo. Es decir, no es técnicamente preciso, el traje está hecho de una aleación de oro y titanio. Pero es provocador. Simbólicamente, al menos' }, 
     {title: 'Soy Tony Stark. Construyo cosas maravillosas, tengo una chica genial, ocasionalmente salvo el mundo. ¿Por qué no puedo dormir?'},
     {title: 'Qué bueno conocerlo, Dr. Banner. Su trabajo en las colisiones anti-electrones no tiene precedentes. Soy un gran admirador de la manera en que usted pierde el control y se convierte en un enorme y rabioso monstruo verde'},
-    { title: 'Esto será como encontrar una aguja en el pajar más grande de todo el planeta... ¡Afortunadamente traje un imán!' },
-    { title: 'No tengo que hacer nada, estuve secuestrado por tres meses; así que voy a hacer lo que yo quiera. Quiero una hamburguesa con queso.' },
-    { title: 'No es suficiente estar en contra, tienes que estar a favor de algo mejor.' },
-    { title: 'Si no podemos proteger la Tierra, puedes apostar a que por lo menos la vengaremos.' },
-    { title: 'El traje y yo somos uno.' }]
+    {title: 'Esto será como encontrar una aguja en el pajar más grande de todo el planeta... ¡Afortunadamente traje un imán!' },
+    {title: 'No tengo que hacer nada, estuve secuestrado por tres meses; así que voy a hacer lo que yo quiera. Quiero una hamburguesa con queso.' },
+    {title: 'No es suficiente estar en contra, tienes que estar a favor de algo mejor.' },
+    {title: 'Si no podemos proteger la Tierra, puedes apostar a que por lo menos la vengaremos.' },
+    {title: 'El traje y yo somos uno.' },
+    {title: 'Mi padre tenía una filosofía: ‘La paz significa tener un mazo más grande que el otro' },
+    {title: 'Doctor Banner, su trabajo sobre colisiones antiparalelas es increíble, y admiro profundamente como pierde el control y se transforma en un monstruo enorme y verde' },
+    {title: 'Tengo un mensaje navideño para El Mandarín… Mi nombre es Tony Stark y no te tengo miedo, sé que eres un cobarde. Así que decidí que tú ya estás muerto e iré por el cadáver' },
+    {title: 'En realidad, él [Capitán América] es el líder. Yo simplemente pago por todo, diseño todo, y hago lucir a todos genial' },
+    {title: 'Esto será como encontrar una aguja en el pajar más grande de todo el planeta… ¡Afortunadamente traje un imán!'},
+]
 
 
 
 const events =[{
     title:'Reunión de frikis en Sol',
     theme:'La relación de Tony Stark con su Padre',
-    location: 'Sol',coordinates:[41.386230,
-     2.174980],
-     owner:['5f009810c9f5aa069b8fb5cb'],
-     participants:['5f0325ff33eef7217a35f979']
+    locationName:'Sol',
+    coordinates: {[41.386230,2.174980]},
+    eventDate: 2020-10-10,
+    owner:'5f05efaae4a6151f5567a82f',
+    participants:['5f06033113d0072a0393bb18', '5f06033e13d0072a0393bb19']
 
 }]
 

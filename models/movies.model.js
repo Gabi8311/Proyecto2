@@ -5,6 +5,7 @@ const moviesSchema = new Schema(
   {
       title: {
         type: String,
+        required:true
       },
       coverImg: {
         type: String,
@@ -17,6 +18,8 @@ const moviesSchema = new Schema(
     },
       year: {
       type: Number,
+      min:1950,
+      
     },
     comments:{
       type:[String]
