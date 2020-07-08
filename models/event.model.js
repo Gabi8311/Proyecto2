@@ -13,9 +13,13 @@ const eventSchema = new Schema(
       type: { type: String },
       coordinates: [Number],
     },
+    eventDate: {
+      type: Date
+    },
     owner: { type: Schema.Types.ObjectId, ref: "User" },
-    participants: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    participants: [{ type: Schema.Types.ObjectId, ref: "User" }]
   },
+
   {
     timestamps: true,
   }

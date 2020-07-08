@@ -1,27 +1,56 @@
 <div class="registro">
-<h1>Lista de Eventos</h1>
+  <h1>Crea tu Evento</h1>
 
-<form action="/events/new-event" method="POST">
+  <form action="/events/new-event" method="POST">
     <div class="form-group">
-        <label for="title">Título</label>
-        <input name="title" type="text" class="form-control" id="field1" placeholder="Título del Evento">
+      <label for="title">Título</label>
+      <input name="title" type="text" class="form-control" id="field1" placeholder="Título del Evento">
     </div>
     <div class="form-group">
-        <label for="theme">Tema del evento</label>
-        <input name="theme" type="text" class="form-control" id="theme" placeholder="Coloque el tema aquí">
+      <label for="theme">Tema del evento</label>
+      <input name="theme" type="text" class="form-control" id="theme" placeholder="Coloque el tema aquí">
     </div>
-   
+
     <div class="form-group">
-        <label>Dirección</label>
-        <input type="text" name="latitude" placeholder="latitude">
-        <input type="text" name="longitude" placeholder="longitude">
-        <small class="form-text text-muted">Introduce la dirección en coordenadas</small>
+      <label>Dirección</label>
+      <select name="type" type="text" class="form-control" id="type-list">
+        <option>Seleccionar</option>
+        <option> Plaza Nueva España</option>
+        <option>Intercambiador Avenida América</option>
+        <option>Ventas</option>
+        <option>Ciudad Universitaria</option>
+        <option>Recinto Ferial de Casa de Campo</option>
+        <option>Biblioteca Pública Maria Moliner</option>
+        <option>Centro Comercial Parquesur</option>
+        <option>Polideportivo Municipal de Alcobendas José Caballero</option>
+        <option>Campo Mar Abierto</option>
+        <option>Plaza Mayor</option>
+      </select>
+      <small class="form-text text-muted">Selecciona uno de nuestros puntos de encuentro</small>
     </div>
-    <button type="submit" class="btn btn-dark btn-block btn-lg bg-danger">Registrar evento</button>
+    <div class="form-group">
+      <label for="eventDate">Dia del evento</label>
+      <input name="eventDate" type="text" class="form-control" id="eventDate" placeholder="Día del evento">
+    </div>
+    <div class="form-group">
+      <label for="owner">Creador del Evento</label>
+      <input name="owner" type="text" class="form-control" id="owner"
+        placeholder="Nombre ó Nick del creador del evento">
+    </div>
+    {{!-- <div class="form-group">
+      <label>Participantes</label>
+      <select name="username" class="form-control" id="username">
+        <option>Seleccionar</option>
+        {{#each allUsers}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </div> --}}
+
+    <button type="submit" class="btn btn-dark btn-block bg-danger text-warning">Crear evento</button>
 
     {{#if errorMsg}}
     <div id="errorMsg">{{{errorMsg}}}</div>
     {{/if}}
-</form>
+  </form>
 </div>
-<a href="/events/event-list" class="btn btn-sm btn-danger text-warning m-5">Volver</a>
+<a href="/profile" class="btn btn-sm btn-danger text-warning mt-5 pl-5 pr-5">Volver</a>

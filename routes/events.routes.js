@@ -1,17 +1,36 @@
 const express = require('express');
 const router = express.Router();
+
 const Event = require("../models/event.model")
 const User = require("../models/user.model")
+
+//encontrar todos los usuarios
+router.get("/new-event", (req, res) => {
+    User
+    .find()
+    .then(allUsers => res.render("events/new-events",allUsers))
+    .catch(err => next(err))
+        
+})
+//Crear evento
+router.post('/new-event', (req, res, next) => {
+    const { title,theme,location,eventDate,owner,participants } = req.body
+
+Event
+.create({ title,theme,location,eventDate,owner,participants})
+.then(() => res.redirect("/events/events-list"))
+.catch(err => next(err))
+})
+
 //List allEvents
 router.get('/events-list', (req, res, next) => {
     
     Event.find()
-    //.populate(user)////////////////
+    .populate('owner')
     .then(allEvents => res.render('events/events-list', {allEvents}))
     .catch(err => next(err))
         
 })
-router.get("/new-event", (req, res) => res.render("events/new-events"))
 
 router.post('/new-event', (req, res, next) => {
     const { title,theme,location,owner,participants } = req.body

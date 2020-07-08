@@ -1,0 +1,56 @@
+
+<div class="registro">
+<h1>Editar Evento</h1>
+
+<form action="/events/{{id}}" method="POST">
+    <div class="form-group">
+        <label for="title">Título</label>
+        <input name="title" type="text" class="form-control" id="field1" placeholder={{title}}>
+    </div>
+    <div class="form-group">
+        <label for="theme">Tema del evento</label>
+        <input name="theme" type="text" class="form-control" id="theme" placeholder={{theme}}>
+    </div>
+   
+    <div class="form-group">
+        <label>Dirección</label>
+       <select name="type" type="text" class="form-control" id="type-list">
+        <option>Seleccionar</option>
+        <option> Plaza Nueva España</option>
+        <option>Intercambiador Avenida América</option>
+        <option>Ventas</option>
+        <option>Ciudad Universitaria</option>
+        <option>Recinto Ferial de Casa de Campo</option>
+        <option>Biblioteca Pública Maria Moliner</option>
+        <option>Centro Comercial Parquesur</option>
+        <option>Polideportivo Municipal de Alcobendas José Caballero</option>
+        <option>Campo Mar Abierto</option>
+        <option>Plaza Mayor</option>
+      </select>
+  <small class="form-text text-muted">Selecciona uno de nuestros puntos de encuentro</small>
+    </div>
+     <div class="form-group">
+        <label for="eventDate">Dia del evento</label>
+        <input name="eventDate" type="text" class="form-control" id="eventDate" placeholder={{eventDate}}>
+    </div>
+     <div class="form-group">
+        <label for="owner">Creador del Evento</label>
+        <input name="owner" type="text" class="form-control" id="owner" placeholder={{username}}>
+    </div>
+    
+    {{!-- <div class="form-group">
+      <label>Participantes</label>
+      <select name="nameUser" class="form-control" id="nameUser">
+        <option>Seleccionar</option>
+        {{#each allUsers}}
+        <option value="{{id}}">{{this}}</option>
+        {{/each}}
+    </div> --}}
+   
+<button type="submit" class="btn btn-dark btn-block bg-danger text-warning">Crear evento</button>
+    {{#if errorMsg}}
+    <div id="errorMsg">{{{errorMsg}}}</div>
+    {{/if}}
+</form>
+</div>
+<a href="/profile" class="btn btn-sm btn-danger text-warning m-5 pl-5 pr-5">Volver</a>
