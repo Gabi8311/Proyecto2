@@ -20,20 +20,25 @@ Event
 .then(() => res.redirect("/events/events-list"))
 .catch(err => next(err))
 })
-//Detalles comics
 
-// router.get('/:id', (req, res, next) => {
-//     Comic.findById(req.params.id)
-//         .then(theComic => res.render('comics/comics-details',theComic))
-//         .catch(err => next(err))
-// })
+router.get('/api', (req, res, next) => {
+    Event.find({})
+        .then(allEventsFromDB => res.json({
+            events: allEventsFromDB
+        }))
+        .catch(err => next(err))
+})
 
-// //Crear comentarios de cómics
-// router.get('/:id/newComment',(req,res,next) =>{
-//     Comic.findById(req.params.id)
-//     .then(theComment => res.render('comics/comics-comment-form', theComment))
-//     .catch(err => next(err))
+router.get('/api/:id', (req, res, next) => {
 
-// })
+    let eventId = req.params.id
+
+    Event.findById(eventId)
+        .then(oneEventFromDB => res.json({
+            event: oneEventFromDB
+        }))
+        .catch(err => next(err))
+})
+
  
 module.exports = router
