@@ -9,9 +9,9 @@ window.onload = () => {
 
     myMap = new google.maps.Map(document.getElementById('myMap'), {
         zoom: 16,
-        center: PlazaNuevaEspaña
-        
-    })
+        center: PlazaNuevaEspaña,
+        styles: mapStyles.IronMAn
+    });
 
     getEvents()
 
