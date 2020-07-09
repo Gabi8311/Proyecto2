@@ -16,8 +16,10 @@
         <h6>{{this.username}}</h6>
         {{/each}}
     </ul>
+    <a href="/events/addParticipants" class="btn btn-sm btn-danger text-warning ml-5 mt-5">Participar</a>
     <a href="/events/events-list" class="btn btn-sm btn-danger text-warning ml-5 mt-5">Volver a lista</a>
     {{#if checkAdmin}}
-    <a href="/events/events-list">Eliminar Evento</a>
+    <a href="/events/events-list" class="btn btn-sm btn-danger text-warning ml-5 mt-5">Eliminar Evento</a>
     {{/if}}
+
 </div>

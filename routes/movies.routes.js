@@ -30,16 +30,9 @@ router.post('/:id/newComment',(req,res,next) => {
     Movie.findByIdAndUpdate(req.params.id,{$push: {comments:comments}})
     .then(() => res.redirect(`/movies/${req.params.id}`))
     .catch(err => next(err))
-///Igual podemos hacer con los favoritos///////
-})
-
-
-router.post('/:id/newComment',(req,res,next) => {
-    const {comments} =req.body
-    Movie.findByIdAndUpdate(req.params.id,{$pull: {comments:comments}})
-    .then(() => res.redirect(`/movies/${req.params.id}`))
-    .catch(err => next(err))
 
 })
+
+
          
 module.exports = router

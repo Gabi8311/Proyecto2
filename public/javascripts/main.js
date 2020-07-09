@@ -46,8 +46,8 @@ function placeEvents(events) {
       position: center,
       map: myMap,
       title: event.name,
-     // icon: "images/icons8-iron-man-48.png",
-     // animation: google.maps.Animation.DROP
+     icon: "/images/icon-IronMan.png",
+     animation: google.maps.Animation.DROP
     })
   })
 

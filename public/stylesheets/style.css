@@ -45,6 +45,9 @@ img {
   height: 800px;
   object-fit: cover; }
 
+.cards {
+  height: 150px; }
+
 .phrases {
   height: 300px;
   align-items: center; }

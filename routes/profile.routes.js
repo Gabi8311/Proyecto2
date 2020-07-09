@@ -21,15 +21,15 @@ router.get('/', checkAuthenticated, (req, res) => {
     const checkAdmin = () => req.user.role.includes('ADMIN')
     res.render('private/principal', { currentUser,checkAdmin: checkAdmin })
 
-})     
+})
 
 router.get("/list", checkRole(['ADMIN']), (req, res, next) => {
     const checkAdmin  = () => req.user.role.includes('ADMIN')
-    
+
 
     User.find({}, {username: 1})
         .then(allUsers => res.render("private/profile-list", {allUsers,checkAdmin: checkAdmin}))
-        .catch(err => console.log("Error en la BBDD ", err))
+        .catch(error => next(error))
 
 })
 
@@ -38,32 +38,41 @@ router.get("/:id", isLoggedIn, (req, res) => {
 
     User.findById(req.params.id)
         .then(user => res.render("private/profile-edition", {user,isOwner: isOwner}))
-        .catch(err => console.log("Error en la BBDD ", err))
+        .catch(error => next(error))
 
 })
 
-router.get("/list/:id/edit", checkRole(['ADMIN']), (req, res) => {
+///Editar perfil
+
+
+
+router.get("/list/edit/:id", checkRole(['ADMIN']), (req, res) => {
 
     User.findById(req.params.id)
         .then(user => res.render("private/profile-edition", user))
-        .catch(err => console.log("Error en la BBDD ", err))
+        .catch(error => next(error))
 
 })
 
-router.post("/:id", checkRole(['ADMIN']), (req, res) => {
-    const {role,myEvents} = req.body
+router.post("/list/edit/:id", checkRole(['ADMIN']), (req, res, next) => {
+    const {role} = req.body
 
-    User.findByIdAndUpdate(req.params.id, {role,myEvents}, {new: true})
-        .then(() => res.redirect(`/profile/list`))
-        .catch(err => console.log("Error en la BBDD ", err))
+    User.findByIdAndUpdate(req.params.id, {role}, {new: true})
+        .then(() => res.redirect('/profile/list'))
+        .catch(error => next(error))
 })
+
+// Eliminar
+  
 
 router.post('/list/:idUser',(req,res) => {
 
     User.findByIdAndRemove(req.params.idUser)
       .then(() => res.redirect('/profile/list'))
-      .catch(err => console.log('Error en la BBDD ',err))
-    
+      .catch(error => next(error))
+
     })
+
+
 
 module.exports = router

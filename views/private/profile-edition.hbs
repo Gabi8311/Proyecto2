@@ -2,26 +2,17 @@
     <div class="row">
         <h1>Edita el perfil del usuario: {{username}}</h1>
         <div class="col-md-6">
-            <form action="/profiles/{{id}}" method="post">
-                <div class="form-group">
-                    <select name="type" type="text" class="form-control" id="type-list">
+            <form action="/profile/list/edit/{{id}}" method="post">
+                <div class="form-group mt-1 ml-4">
+                    <select name="role" type="text" class="form-control" id="role">
                         <option>Seleccionar</option>
                         <option>ADMIN</option>
                         <option>USER</option>
 
                     </select>
                 </div>
-                <div class="form-group">
-                    <select name="type" type="text" class="form-control" id="type-list">
-                        <ul>
-                            {{#each myEvents}}
-                            <option>{{this.title}}</option>
-                            {{/each}}
-                        </ul>
-                    </select>
-                </div>
                 <button type="submit" class="btn btn-sm btn-danger text-warning m-5">Editar usuario</button>
-                <a href="/profile/list" class="btn btn-sm btn-danger text-warning m-5">Volver</a>
+                <a href="/profile/list" class="btn btn-sm btn-danger text-warning m-5 pl-5 pr-5">Volver</a>
             </form>
         </div>
     </div>

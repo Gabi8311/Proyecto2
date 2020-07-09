@@ -10,9 +10,9 @@ const bcryptSalt = 10
 //const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/auth/login')
 
 //Ver que rol tiene
-// const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect("auth/login", {
-//     message: "Area Restringida!"
-// })
+const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect("auth/login", {
+    message: "Area Restringida!"
+})
 router.get("/signup", (req, res) => res.render("auth/signup"))
 
 router.post("/signup", (req, res, next) => {

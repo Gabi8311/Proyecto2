@@ -1,19 +1,23 @@
-<div class="container registro text-center">
+<div class="registro text-center">
     <h1>Lista de usuarios</h1>
     <hr>
     <div class="row">
-    <ul>
-        {{#each allUsers}}
-        <div class="col-3">
-        <h3>{{username}}</h3>
-        <form action="/profile/list/{{id}}" method="post">
-        <button class="btn btn-sm btn-danger text-warning mt-2">Eliminar</button>
-         </form>
-        <a href="/profile/list/{{id}}/edit" class="btn btn-sm btn-danger text-warning mt-2 mb-4">Editar</a>
-        {{/each}}
-        </div>
-    </ul>
-    </div>
 
-    <a href="/profile" class="btn btn-sm btn-danger text-warning m-5 pl-5 pr-5">Volver</a>
+        {{#each allUsers}}
+        <div class="col-3 mb-5">
+            <div class="cards text-danger bg-warning mb-3">
+                <div class="card-header"><h3>{{username}}</h3></div>
+                <form action="/profile/list/{{id}}" method="post">
+                    <a href="/profile/list/{{id}}/edit" class="btn btn-sm btn-danger text-warning mt-3 mr-2">Editar</a>
+                    <button class="btn btn-sm btn-danger text-warning mt-3 ml-2">Eliminar</button>
+                </form>
+            </div>
+        
+          </div>
+        {{/each}}
+  
+</div>
+
+
+<a href="/profile" class="btn btn-sm btn-danger text-warning mt-5 pl-5 pr-5">Volver</a>
 </div>
