@@ -1,9 +1,12 @@
-<div class="container registro">
-    <h1>Deja tu comentario sobre el cómic, {{title}}</h1>
+<div class="registro">
+    <h1 class="text-center mb-4">Deja tu comentario sobre el cómic, {{title}}</h1>
+    <hr>
     <form action="/comics/{{id}}/newComment" method="post">
-        <textarea class="ml-4 mt-4" name="comments" id="comments" cols="50" rows="10"
+        <textarea class="ml-4" name="comments" id="comments" cols="50" rows="10"
             placeholder="Escriba aquí"></textarea>
-        <button class="btn btn-sm btn-danger text-warning m-5">Guardar comentario</button>
-        <a href="/comics/comics-list" class="btn btn-sm btn-danger text-warning m-5">Volver al listado</a>
+            <br>
+        <button class="btn btn-sm btn-danger text-warning ml-4 mt-4 mb-5">Guardar comentario</button>
+       
     </form>
+     <a href="/comics/{{id}}" class="btn btn-sm btn-danger text-warning ml-4 mt-5">Volver al listado</a>
 </div>

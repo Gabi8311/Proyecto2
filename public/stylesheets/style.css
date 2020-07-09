@@ -5,6 +5,15 @@ body {
   background: url("../images/jarvisOscuro.jpg");
   background-attachment: fixed; }
 
+h1 {
+  font-family: 'Bangers', cursive; }
+
+button, a {
+  font-family: 'Permanent Marker', cursive; }
+
+h2, h3, h4, h5, h6, p, label {
+  font-family: 'Architects Daughter', cursive; }
+
 h1, h2, h3 {
   font-weight: 200; }
 
@@ -53,5 +62,8 @@ img {
 .jumbotron {
   background-image: url(../images/jumbotronIron.jpg);
   height: 600px; }
+
+#comments {
+  height: 50px; }
 
 /*# sourceMappingURL=style.css.map */

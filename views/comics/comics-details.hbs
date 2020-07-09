@@ -1,21 +1,33 @@
-<div class="container registro">
-
-    <h1 style="font-weight: 100">{{title}}</h1>
-    <img src="{{coverImg}}" alt="cover image">
-    <p>Sinopsis: {{description}}</p>
-    <p>Año de estreno: {{year}}</p>
-
-
-    <a href="/comics/comics-list" class="btn btn-sm btn-danger text-warning  ">Volver a lista</a>
+<div class="registro text-center">
+    <h1 class="mb-5">{{title}}</h1>
+    <div class="row">
+    <div class="col-6">
+        
+        <img src="{{coverImg}}" alt="cover image">
+    </div>
+    <div class="col-6">
+        <h3>Sinopsis: {{description}}</h3>
+        <h4>Año de estreno: {{year}}</h4>
+    </div>
+</div>
+    <a href="/comics" class="btn btn-sm btn-danger text-warning  ">Volver a lista</a>
     <a href="/comics/{{_id}}/newComment" class="btn btn-sm btn-danger text-warning m-5">Deja tu comentario</a>
 </div>
 
-<div class="container registro">
-    <h2>Opiniones sobre {{title}}</h2>
-    <ul>
-        {{#each comments}}
-        <li>{{this}}</li>
-        {{/each}}
-    </ul>
 
-</div>
+    <h2 class="text-center text-white mb-4">Opiniones sobre {{title}}</h2>
+    <hr>
+    
+       
+  <div class="row mb-5">
+        {{#each comments}}
+         <div class="col-4 text-center" id="comments">
+            <div class="bg-white ">
+                <div class="card-body">
+                    <h5>"{{this}}"</h5>
+                </div>
+            </div>
+        </div>
+      
+        {{/each}}
+  </div>
