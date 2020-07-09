@@ -30,8 +30,8 @@ function getEvents() {
 function placeEvents(events) {
     events.forEach(event => {
         const center = {
-            lat: event.location.coordinates[1],
-            lng: event.location.coordinates[0]
+            lat: event.coordinates[1],
+            lng: event.coordinates[0]
         }
         new google.maps.Marker({
             position: center,
@@ -41,7 +41,7 @@ function placeEvents(events) {
     })
 
     myMap.setCenter({
-        lat: events[0].location.coordinates[1],
-        lng: events[0].location.coordinates[0]
+        lat: events[0].coordinates[1],
+        lng: events[0].coordinates[0]
     })
 }
