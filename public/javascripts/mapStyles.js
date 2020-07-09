@@ -896,7 +896,7 @@ const mapStyles = {
             ]
         }
     ],
-    IronMAn: [{
+    IronMan: [{
             "elementType": "geometry",
             "stylers": [{
                 "color": "#212121"

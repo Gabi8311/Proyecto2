@@ -1,8 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-const Event = require("../models/event.model")
+const Event = require("../models/events.model")
 const User = require("../models/user.model")
+const Location = require("../models/locations.model");
+const { deserialize } = require('v8');
+
+//Maps
+
+router.get('/api', (req, res, next) => {
+    Event
+        .find()
+        .then(allEventsFromDB => res.json( allEventsFromDB))
+        .catch(err => next(err))
+})
 
 //List allEvents
 router.get('/events-list', (req, res, next) => {
@@ -12,28 +23,43 @@ router.get('/events-list', (req, res, next) => {
         .populate('owner')
         .populate('participants')
     .then(allEvents => {
-        console.log(allEvents)
+        // console.log(allEvents)
         res.render('events/events-list', {allEvents})})
     .catch(err => next(err))
         
 })
-
-//encontrar todos los usuarios
-router.get("/new-event", (req, res) => {
-    User
-    .find()
-    .then(allTheUsers => res.render("events/new-events",allTheUsers))
+///Pruebaaaaa
+router.get("/locations",(req,res) =>{
+    Location.find()
+    .then((allLocations) => res.json(allLocations))
     .catch(err => next(err))
-        
+
+})
+
+//encontrar todos los usuarios////Quitar el promiseAll
+router.get("/new-event", (req, res) => {
+    const setLocations = Location.find()
+   
+    Promise
+    .all([setLocations])
+    .then(allData => res.render("events/new-events",{location:allData[0]}))
+    .catch(err => next(err))
+     
 })
 
 //Crear evento
 router.post('/new-event', (req, res, next) => {
-    const { title, theme, eventDate, owner, participants} = req.body
-    const location = { type: 'Point', coordinates: [req.body.longitude, req.body.latitude] }
 
-     Event
-    .create({ title, theme, location, eventDate, user:owner, user:participants  })
+    const { title, theme,locationName, eventDate} = req.body
+     console.log(req.body)
+
+    Location.find( { "title": locationName })
+    .then((response) => {
+        const location = [response[0].coords.lat,response[0].coords.lng]
+        Event
+        .create({ title, theme, locationName,coordinates:location, eventDate,owner:req.user.id})
+    })
+  
     .then(() => res.redirect("/events/events-list"))
     .catch(err => next(err))
 })
@@ -53,16 +79,16 @@ router.get('/:id/delete', (req, res, next) => {
     .catch((err) => next(err));
 
 });
+//Add a los comentarios al Array
+router.post('/:id/addPanticipants',(req,res,next) => {
+    const {comments} =req.body
 
+    Comic.findByIdAndUpdate(req.params.id,{$push: {comments:comments}})
+    .then(() => res.redirect(`/comics/${req.params.id}`))
+    .catch(err => next(err))
 
-//Maps
-
-router.get('/api', (req, res, next) => {
-    Event
-        .find({})
-        .then(allEventsFromDB => res.json({events: allEventsFromDB}))
-        .catch(err => next(err))
 })
+
 
 router.get('/api/:id', (req, res, next) => {
 

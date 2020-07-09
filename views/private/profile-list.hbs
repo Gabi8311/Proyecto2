@@ -4,8 +4,8 @@
     <div class="row">
     <ul>
         {{#each allUsers}}
-        <div class="clo-3">
-        <li><h3>{{username}}</h3></li>
+        <div class="col-3">
+        <h3>{{username}}</h3>
         <form action="/profile/list/{{id}}" method="post">
         <button class="btn btn-sm btn-danger text-warning mt-2">Eliminar</button>
          </form>

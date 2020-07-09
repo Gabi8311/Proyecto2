@@ -14,7 +14,7 @@ const eventSchema = new Schema(
 
     locationName:{
       type: String,
-      required: true
+      //required: true
     },
     coordinates: {
       type: [Number],

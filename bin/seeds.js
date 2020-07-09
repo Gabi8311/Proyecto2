@@ -2,7 +2,8 @@ const mongoose = require("mongoose")
 const Movie = require('../models/movies.model')
 const Comic = require('../models/comics.model')
 const Phrase = require('../models/phrases.model')
-const Event = require('../models/event.model')
+const Event = require('../models/events.model')
+const Location = require('../models/locations.model')
 
 const dbTitle = 'IronData'
 
@@ -13,6 +14,7 @@ Movie.collection.drop()
 Comic.collection.drop()
 Phrase.collection.drop()
 Event.collection.drop()
+Location.collection.drop()
 
 const comics = [
 
@@ -196,26 +198,100 @@ const phrases = [
     {title: 'Esto será como encontrar una aguja en el pajar más grande de todo el planeta… ¡Afortunadamente traje un imán!'},
 ]
 
-
-
 const events =[{
     title:'Reunión de frikis en Sol',
     theme:'La relación de Tony Stark con su Padre',
     locationName:'Sol',
-    coordinates: {[41.386230,2.174980]},
+    coordinates: [40.417175,-3.703872],
     eventDate: 2020-10-10,
     owner:'5f05efaae4a6151f5567a82f',
     participants:['5f06033113d0072a0393bb18', '5f06033e13d0072a0393bb19']
 
 }]
 
+const locations = [
+
+    {
+        coords: {
+            lat: 40.464566,
+            lng: -3.686461
+        },
+        title: 'Plaza Nueva España'
+    },
+
+    {
+        coords: {
+            lat: 40.437997,
+            lng: -3.676659
+        },
+        title: 'Intercambiador Avenida América'
+    },
+    {
+        coords: {
+            lat: 40.426513,
+            lng: -3.646013
+        },
+        title: 'Ventas'
+    },
+    {
+        coords: {
+            lat: 40.445125,
+            lng: -3.729563
+        },
+        title: 'Ciudad Universitaria'
+    },
+    {
+        coords: {
+            lat: 40.411266,
+            lng: -3.738915
+        },
+        title: 'Recinto Ferial de Casa de Campo'
+    },
+    {
+        coords: {
+            lat: 40.411266,
+            lng: -3.738915
+        },
+        title: 'Biblioteca Pública Maria Moliner'
+    },
+    {
+        coords: {
+            lat: 40.349614,
+            lng: -3.709918
+        },
+        title: 'Centro Comercial Parquesur'
+    },
+    {
+        coords: {
+            lat: 40.537036,
+            lng: -3.619606
+        },
+        title: 'Polideportivo Municipal de Alcobendas José Caballero'
+    },
+    {
+        coords: {
+            lat: 40.375986,
+            lng: -3.616939
+        },
+        title: 'Campo Mar Abierto'
+    },
+    {
+        coords: {
+            lat: 40.415490,
+            lng: -3.707138
+        },
+        title: 'Plaza Mayor'
+    }
+]
+
 const moviePromise = Movie.create(movies)
 const comicPromise = Comic.create(comics)
 const phrasePromise = Phrase.create(phrases)
 const eventsPromise = Event.create(events)
+const locationsPromise = Location.create(locations)
     
 Promise
-    .all([moviePromise, comicPromise, phrasePromise,eventsPromise])
+    .all([moviePromise, comicPromise, phrasePromise,eventsPromise,locationsPromise])
     .then(results => console.log(`Created ${results.length}`))
     .then(() => mongoose.connection.close()) 
     .catch(err => console.log(err))
