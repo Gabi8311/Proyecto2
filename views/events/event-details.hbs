@@ -1,4 +1,4 @@
-<div class="container registro text-center">
+<div class="container text-warning text-center">
     <h1>Detalles del Evento</h1>
     <hr>
     <h2>{{title}}</h2>
@@ -16,7 +16,9 @@
         <h6>{{this.username}}</h6>
         {{/each}}
     </ul>
-    <a href="/events/addParticipants" class="btn btn-sm btn-danger text-warning ml-5 mt-5">Participar</a>
+    <form action="/events/{{_id}}/addParticipants" method="POST">
+    <button class="btn btn-sm btn-danger text-warning ml-5 mt-5">Participar</button>
+    </form>
     <a href="/events/events-list" class="btn btn-sm btn-danger text-warning ml-5 mt-5">Volver a lista</a>
     {{#if checkAdmin}}
     <a href="/events/events-list" class="btn btn-sm btn-danger text-warning ml-5 mt-5">Eliminar Evento</a>

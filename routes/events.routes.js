@@ -37,8 +37,9 @@ router.get("/locations", (req, res) => {
 //encontrar todos los usuarios////Quitar el promiseAll
 router.get("/new-event", (req, res) => {
   Location.find()
-    .then((allData) =>
-      res.render("events/new-events", { location: allData[0] })
+    .then((allData) =>{
+    console.log(allData)
+      res.render("events/new-events", { location: allData})}
     )
     .catch((err) => next(err));
 });
@@ -64,6 +65,14 @@ router.get("/:id", (req, res, next) => {
     .then((theEvent) => res.render("events/event-details", theEvent))
     .catch((err) => next(err))
 })
+//Add a los participantes al Array
+router.post("/:id/addParticipants", (req, res, next) => {
+
+  Event.findByIdAndUpdate( req.params.id,{ $push: { participants: req.user.id } } )
+      .then(() => res.redirect(`/events/${req.params.id}`))
+      .catch((err) => next(err))
+})
+
 //Delete
 router.get("/:id/delete", (req, res, next) => {
 
@@ -71,14 +80,6 @@ router.get("/:id/delete", (req, res, next) => {
     .then(() => res.redirect(`/events/events-list`))
     .catch((err) => next(err))
 })
-//Add a los participantes al Array
-router.post("/:id/addPanticipants", (req, res, next) => {
-    
-    Event.findByIdAndUpdate( req.params.id,{ $push: { participants: req.user.id } } )
-        .then(() => res.redirect(`/events/${req.params.id}`))
-        .catch((err) => next(err))
-})
-
 router.get("/api/:id", (req, res, next) => {
       
   let eventId = req.params.id
